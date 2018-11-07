@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Food</title>
+
+    <style>
+        .menu-card {
+            height: 200px;
+            background: #0cb994;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 5px #056651;
+            border: #444444 0.5px solid;
+        }
+        
+        .menu-card:active {
+            background-color: #08866b;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+        
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23888' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+        }
+        
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23888' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+
+    <script>
+        var socket = io('http://127.0.0.1:3000/food');
+        socket.on('hi', function(data) {
+            var mBox = document.getElementById("serverMessage");
+            mBox.innerHTML = data
+        });
+
+        function sendFoodMessage(num) {
+            // var randomNumber = Math.floor((Math.random() * 10) + 1)
+            socket.emit('foodEvent', num);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Food</h1>
+    <div id="serverMessage">Hello world</div>
+    <button onclick="sendFoodMessage()">Send Message</button>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(1)">
+                            <h2>Steak 1</h2>
+                        </div>
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(2)">
+                            <h2>Steak 2</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(3)">
+                            <h2>Steak 3</h2>
+                        </div>
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(4)">
+                            <h2>Steak 4</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-5 menu-card">
+                            <h2>Rice 1</h2>
+                        </div>
+                        <div class="col-5 menu-card">
+                            <h2>Rice 2</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-5 menu-card">
+                            <h2>Rice 3</h2>
+                        </div>
+                        <div class="col-5 menu-card">
+                            <h2>Rice 4</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-5 menu-card">
+                            <h2>Cake 1</h2>
+                        </div>
+                        <div class="col-5 menu-card">
+                            <h2>Cake 2</h2>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-5 menu-card">
+                            <h2>Cake 3</h2>
+                        </div>
+                        <div class="col-5 menu-card">
+                            <h2>Cake 4</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

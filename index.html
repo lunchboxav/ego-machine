@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Video</title>
+</head>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+    var socket = io('/video');
+    socket.on('hi', function(data) {
+        var mBox = document.getElementById("serverMessage");
+        mBox.innerHTML = data
+    });
+
+    function sendVideoMessage() {
+        var randomNumber = Math.floor((Math.random() * 10) + 1)
+        socket.emit('videoEvent', randomNumber);
+    }
+</script>
+
+<body>
+    <h1>Video</h1>
+    <div id="serverMessage">Hello world</div>
+    <button onclick="sendVideoMessage()">Send Message</button>
+</body>
+
+</html>

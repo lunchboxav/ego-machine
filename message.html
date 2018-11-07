@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Message</title>
+</head>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+    var socket = io('/');
+    socket.on('displayMessage', function(data) {
+        var mBox = document.getElementById("serverMessage");
+        mBox.innerHTML = data
+    });
+</script>
+
+<body>
+    <h1>Message</h1>
+    <div id="serverMessage">Hello world</div>
+</body>
+
+</html>
