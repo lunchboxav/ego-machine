@@ -5,16 +5,19 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 app.get('/', function(req, res) {
-    res.sendFile('index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 app.get('/food', function(req, res) {
-    res.sendFile('food.html');
+    res.sendFile(__dirname + '/food.html');
+});
+app.get('/food-client', function(req, res) {
+    res.sendFile(__dirname + '/food-client.html');
 });
 app.get('/message', function(req, res) {
-    res.sendFile('message.html');
+    res.sendFile(__dirname + '/message.html');
 });
 app.get('/video', function(req, res) {
-    res.sendFile('video.html');
+    res.sendFile(__dirname + '/video.html');
 });
 
 app.use(express.static(__dirname + '/public'));

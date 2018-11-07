@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="lib/video-js.css" rel="stylesheet">
+    <title>Video</title>
+</head>
+<script src="lib/socket.io.js"></script>
+
+<script>
+    var socket = io('/video');
+
+    function sendVideoMessage(num) {
+        socket.emit('videoEvent', num);
+    }
+</script>
+
+<body>
+    <video id="my-video" autoplay="true" muted="muted" class="video-js vjs-fluid" data-setup='{}'>
+    </video>
+    <script src="lib/video.js"></script>
+    <script>
+        var videoList = [{
+            "src": "coding.mp4",
+            "type": 1
+        }, {
+            "src": "dance.mp4",
+            "type": 2
+        }, {
+            "src": "bloom.mp4",
+            "type": 3
+        }]
+        var listLen = videoList.length;
+        var rand = 0;
+
+        var video = videojs('my-video').ready(function() {
+            var player = this;
+            player.src({
+                "type": "video/mp4",
+                "src": videoList[0].src
+            });
+            player.on('ended', function() {
+                rand = Math.floor((Math.random() * listLen - 1) + 1);
+                player.src({
+                    "type": "video/mp4",
+                    "src": videoList[rand].src
+                });
+                player.load();
+                player.play();
+                sendVideoMessage(videoList[rand].type);
+            });
+        });
+    </script>
+</body>
+
+</html>
