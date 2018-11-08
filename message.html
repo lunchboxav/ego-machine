@@ -3,20 +3,42 @@
 
 <head>
     <title>Message</title>
+    <style>
+        @font-face {
+            font-family: Raleway;
+            src: url(font/Raleway-ExtraBold.ttf);
+        }
+        
+        html,
+        body {
+            background: #006531;
+            height: 100%;
+        }
+        
+        #serverMessage {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-family: Raleway;
+            font-size: 72px;
+        }
+    </style>
 </head>
-<script src="/socket.io/socket.io.js"></script>
 
-<script>
-    var socket = io('/');
-    socket.on('displayMessage', function(data) {
-        var mBox = document.getElementById("serverMessage");
-        mBox.innerHTML = data
-    });
-</script>
 
 <body>
-    <h1>Message</h1>
     <div id="serverMessage">Hello world</div>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        var socket = io('/');
+        socket.on('displayMessage', function(data) {
+            var mBox = document.getElementById("serverMessage");
+            mBox.innerHTML = data
+        });
+    </script>
 </body>
 
 </html>

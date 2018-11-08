@@ -16,19 +16,19 @@
 </script>
 
 <body>
-    <video id="my-video" autoplay="true" muted="muted" class="video-js vjs-fluid" data-setup='{}'>
+    <video id="my-video" controls autoplay="true" muted="muted" class="video-js vjs-fluid" data-setup='{}'>
     </video>
     <script src="https://vjs.zencdn.net/7.2.4/video.js"></script>
     <script>
         var videoList = [{
             "src": "coding.mp4",
-            "type": 1
+            "type": 0
         }, {
             "src": "dance.mp4",
-            "type": 2
+            "type": 1
         }, {
             "src": "bloom.mp4",
-            "type": 3
+            "type": 2
         }]
         var listLen = videoList.length;
         var rand = 0;
@@ -50,6 +50,10 @@
                 sendVideoMessage(videoList[rand].type);
             });
         });
+
+        video.on('dblclick', function() {
+            video.requestFullscreen();
+        })
     </script>
 </body>
 
