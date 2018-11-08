@@ -16,7 +16,7 @@
 </script>
 
 <body>
-    <video id="my-video" autoplay="true" muted="muted" class="video-js vjs-fluid" data-setup='{}'>
+    <video id="my-video" controls autoplay="true" muted="muted" class="video-js vjs-fluid" data-setup='{}'>
     </video>
     <script src="lib/video.js"></script>
     <script>
@@ -39,7 +39,6 @@
                 "type": "video/mp4",
                 "src": videoList[0].src
             });
-            player.enterFullScreen();
             player.on('ended', function() {
                 rand = Math.floor((Math.random() * listLen - 1) + 1);
                 player.src({
