@@ -11,7 +11,7 @@
             },
             "2": {
                 "dialogue": "Thank you.",
-                "accept": "1"
+                "accept": "0"
             },
             "3": {
                 "dialogue": "This will make my mood better.",
@@ -28,8 +28,8 @@
                 "accept": "0"
             },
             "2": {
-                "dialogue": "This is good.",
-                "accept": "1"
+                "dialogue": "Well, not really, thanks.",
+                "accept": "0"
             },
             "3": {
                 "dialogue": "You should eat too.",
@@ -46,8 +46,8 @@
                 "accept": "0"
             },
             "2": {
-                "dialogue": "I just want to eat.",
-                "accept": "1"
+                "dialogue": "I don't want to eat.",
+                "accept": "0"
             },
             "3": {
                 "dialogue": "It's your choice...",
