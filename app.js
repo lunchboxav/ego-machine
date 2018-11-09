@@ -1,3 +1,4 @@
+var botState = require('./gameData.json');
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -23,83 +24,18 @@ app.get('/message', function(req, res) {
 app.get('/video', function(req, res) {
     res.sendFile(__dirname + '/video.html');
 });
+app.get('/video-client', function(req, res) {
+    res.sendFile(__dirname + '/video-client.html');
+});
 
 app.use(express.static(__dirname + '/public'));
 // app.use('/static', express.static(path.join(__dirname + 'public')));
 
 var gameState = {
-    video: 0,
-    food: 0
-}
-
-// [video][food]
-var botState = {
-    0: {
-        0: {
-            "dialogue": "I'm full, I'm okay to pass this one",
-            "accept": "0"
-        },
-        1: {
-            "dialogue": "I'm hungry, let's eat!",
-            "accept": "1"
-        },
-        2: {
-            "dialogue": "Are you sure you want to eat?",
-            "accept": "0"
-        },
-        3: {
-            "dialogue": "This is delicious!",
-            "accept": "1"
-        },
-        4: {
-            "dialogue": "I only know good food",
-            "accept": "0"
-        }
-    },
-    1: {
-        0: {
-            "dialogue": "What?? This food? Ugh, no",
-            "accept": "0"
-        },
-        1: {
-            "dialogue": "Don't talk, just eat",
-            "accept": "0"
-        },
-        2: {
-            "dialogue": "If you don't eat this, I'll finish it",
-            "accept": "1"
-        },
-        3: {
-            "dialogue": "You are missing out on a 5 star menu",
-            "accept": "1"
-        },
-        4: {
-            "dialogue": "I don't think you appreciate my choice",
-            "accept": "0"
-        }
-    },
-    2: {
-        0: {
-            "dialogue": "Not in the mood",
-            "accept": "0"
-        },
-        1: {
-            "dialogue": "Ok, I'll dine alone",
-            "accept": "0"
-        },
-        2: {
-            "dialogue": "I just want to eat",
-            "accept": "1"
-        },
-        3: {
-            "dialogue": "It's your choice...",
-            "accept": "1"
-        },
-        4: {
-            "dialogue": "No food, no food",
-            "accept": "0"
-        }
-    },
+    moodCounter: 5,
+    mood: "neutral",
+    video: '0',
+    food: '0'
 }
 
 var videoNsp = io.of('/video');
@@ -122,38 +58,58 @@ foodNsp.on('connection', function(socket) {
 
     socket.on('foodEvent', function(data) {
         gameState.food = data;
-        var msg = processState(gameState.video, gameState.food);
-        var srv = processServoState(gameState.video, gameState.food);
-        io.emit('displayMessage', msg);
-        port.write(srv, function(err) {
+        var output = processState(gameState);
+        gameState.moodCounter = output.moodCounter;
+        gameState.mood = output.mood;
+
+        io.emit('displayMessage', output);
+        port.write(output.command, function(err) {
             if (err) {
                 return console.log('Error on write: ', err.message);
             }
-            console.log('command servo with the command ' + srv)
-        })
+            console.log('command servo with the command ' + output.command)
+        });
         console.log(gameState);
+        console.log("mood counter is " + gameState.moodCounter + " mood is " + gameState.mood);
     });
 });
 
-function processState(v_, f_) {
-    let message = "";
-    let v = v_.toString();
-    let f = f_.toString();
-    message = botState[v][f]["dialogue"]
+// var moodCounter = 5;
 
-    console.log(message)
-    return message
-}
+function processState(obj) {
+    let message = botState[obj.mood][obj.video][obj.food]["dialogue"];
+    let command = botState[obj.mood][obj.video][obj.food]["accept"];
 
-function processServoState(v_, f_) {
-    let servoInput = ""
-    let v = v_.toString();
-    let f = f_.toString();
-    servoInput = botState[v][f]["accept"]
-    return servoInput;
+    let moodCounter = gameState.moodCounter;
+    if (command == 1) {
+        moodCounter++;
+    } else if (command == 0) {
+        moodCounter--;
+    }
+
+    if (moodCounter >= 7) {
+        mood = "happy";
+    } else if (moodCounter < 7 && moodCounter >= 4) {
+        mood = "neutral"
+    } else if (moodCounter < 4) {
+        mood = "down";
+    }
+
+    var gameOutput = {};
+    gameOutput["message"] = message;
+    gameOutput["command"] = command;
+    gameOutput["mood"] = mood;
+    gameOutput["moodCounter"] = moodCounter;
+
+    return gameOutput;
 }
 
 http.listen(3000, function() {
     console.log('listening on *:3000');
-    console.log(botState["1"]["4"]);
+    /* for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 4; j++) {
+            console.log(botState["happy"][i][j]);
+        }
+    } */
+    //console.log(botState["down"]["1"]["4"]);
 });

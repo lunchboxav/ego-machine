@@ -64,6 +64,7 @@
 
         function sendFoodMessage(num) {
             // var randomNumber = Math.floor((Math.random() * 10) + 1)
+            num = num.toString();
             socket.emit('foodEvent', num);
         }
     </script>
@@ -76,18 +77,18 @@
             <div class="carousel-item active">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(1)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(0)">
                             <h2>Steak </h2>
                         </div>
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(2)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(1)">
                             <h2>French Fries</h2>
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(3)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(2)">
                             <h2>Burger</h2>
                         </div>
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(4)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(3)">
                             <h2>Hot Dog</h2>
                         </div>
                     </div>
@@ -96,18 +97,18 @@
             <div class="carousel-item">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(1)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(0)">
                             <h2>Fried Rice</h2>
                         </div>
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(2)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(1)">
                             <h2>Fried Chicken</h2>
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(3)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(2)">
                             <h2>Opor Ayam</h2>
                         </div>
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(4)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(3)">
                             <h2>Fried Prawn</h2>
                         </div>
                     </div>
@@ -116,18 +117,18 @@
             <div class="carousel-item">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(1)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(0)">
                             <h2>Cake</h2>
                         </div>
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(2)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(1)">
                             <h2>Pudding</h2>
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(3)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(2)">
                             <h2>Ice Cream</h2>
                         </div>
-                        <div class="col-5 menu-card" onclick="sendFoodMessage(4)">
+                        <div class="col-5 menu-card" onclick="sendFoodMessage(3)">
                             <h2>Fruit Soup</h2>
                         </div>
                     </div>

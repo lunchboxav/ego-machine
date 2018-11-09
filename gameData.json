@@ -1,0 +1,170 @@
+{
+    "down": {
+        "2": {
+            "0": {
+                "dialogue": "I don't want to eat, thank you.",
+                "accept": "0"
+            },
+            "1": {
+                "dialogue": "I'll have it later, I'm full.",
+                "accept": "0"
+            },
+            "2": {
+                "dialogue": "Thank you.",
+                "accept": "1"
+            },
+            "3": {
+                "dialogue": "This will make my mood better.",
+                "accept": "1"
+            }
+        },
+        "1": {
+            "0": {
+                "dialogue": "What?? This food? Ugh, no.",
+                "accept": "0"
+            },
+            "1": {
+                "dialogue": "Nah, just had a meal.",
+                "accept": "0"
+            },
+            "2": {
+                "dialogue": "This is good.",
+                "accept": "1"
+            },
+            "3": {
+                "dialogue": "You should eat too.",
+                "accept": "1"
+            }
+        },
+        "0": {
+            "0": {
+                "dialogue": "...",
+                "accept": "0"
+            },
+            "1": {
+                "dialogue": "Not in the mood.",
+                "accept": "0"
+            },
+            "2": {
+                "dialogue": "I just want to eat.",
+                "accept": "1"
+            },
+            "3": {
+                "dialogue": "It's your choice...",
+                "accept": "1"
+            }
+        }
+    },
+    "neutral": {
+        "2": {
+            "0": {
+                "dialogue": "Let me remember that one first.",
+                "accept": "0"
+            },
+            "1": {
+                "dialogue": "Sometimes, all you need is a good distraction.",
+                "accept": "0"
+            },
+            "2": {
+                "dialogue": "Thank you for this inviting meal.",
+                "accept": "1"
+            },
+            "3": {
+                "dialogue": "Enjoy your meal too.",
+                "accept": "1"
+            }
+        },
+        "1": {
+            "0": {
+                "dialogue": "What's your opinion regarding that social issue?",
+                "accept": "0"
+            },
+            "1": {
+                "dialogue": "Thank you my friend, I'll take one later.",
+                "accept": "0"
+            },
+            "2": {
+                "dialogue": "Seems good, I'll take it.",
+                "accept": "1"
+            },
+            "3": {
+                "dialogue": "This food reminds me of all the good things in life.",
+                "accept": "1"
+            }
+        },
+        "0": {
+            "0": {
+                "dialogue": "I'm fine, thanks. I don't feel like eating after that discussion.",
+                "accept": "0"
+            },
+            "1": {
+                "dialogue": "That's okay, you can eat though.",
+                "accept": "0"
+            },
+            "2": {
+                "dialogue": "Thank you, let's eat.",
+                "accept": "1"
+            },
+            "3": {
+                "dialogue": "This looks like a fine food, shall we eat?",
+                "accept": "1"
+            }
+        }
+    },
+    "happy": {
+        "2": {
+            "0": {
+                "dialogue": "With all due respect my friend, I don't think this food fits our festive mood. Bbut you're free to eat though.",
+                "accept": "0"
+            },
+            "1": {
+                "dialogue": "Thank you very much for the offer, my friend. But I've eaten before I got here and I'm pretty full.",
+                "accept": "0"
+            },
+            "2": {
+                "dialogue": "Of course! Not even Einstein could figure out the scientific reason of me refusing that delicious food.",
+                "accept": "1"
+            },
+            "3": {
+                "dialogue": "I remember all the good things in life. Including this food, and you, of course. You.",
+                "accept": "1"
+            }
+        },
+        "1": {
+            "0": {
+                "dialogue": "Wait, what? Is that why you talk me through those issues? You got me.",
+                "accept": "0"
+            },
+            "1": {
+                "dialogue": "You know I don't like that food, haha. Carry on my friend.",
+                "accept": "0"
+            },
+            "2": {
+                "dialogue": "I'm full but I can always take more of that",
+                "accept": "1"
+            },
+            "3": {
+                "dialogue": "Tell me how can I refuse this delightful food?",
+                "accept": "1"
+            }
+        },
+        "0": {
+            "0": {
+                "dialogue": "I remember so many good things, you can eat first, I just want to enjoy this moment.",
+                "accept": "0"
+            },
+            "1": {
+                "dialogue": "How can you forget that? It was an exciting time. Have that meal first, I'm good.",
+                "accept": "0"
+            },
+            "2": {
+                "dialogue": "Yum yum yum, can't wait to have that.",
+                "accept": "1"
+            },
+            "3": {
+                "dialogue": "How did you know I like this? You remember everything, yeah?",
+                "accept": "1"
+            }
+        }
+    }
+}

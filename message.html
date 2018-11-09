@@ -13,6 +13,7 @@
         body {
             background: #006531;
             height: 100%;
+            margin: 0;
         }
         
         #serverMessage {
@@ -22,7 +23,24 @@
             justify-content: center;
             color: #fff;
             font-family: Raleway;
-            font-size: 72px;
+            font-size: 90px;
+            width: 80%;
+            margin: auto;
+        }
+        
+        .down {
+            background: #707070;
+            color: #fff;
+        }
+        
+        .neutral {
+            background: #e7ab29;
+            color: #444;
+        }
+        
+        .happy {
+            background: #069149;
+            color: #fff
         }
     </style>
 </head>
@@ -36,7 +54,9 @@
         var socket = io('/');
         socket.on('displayMessage', function(data) {
             var mBox = document.getElementById("serverMessage");
-            mBox.innerHTML = data
+            mBox.innerHTML = data.message;
+            //mBox.className = data.mood;
+            document.body.className = data.mood;
         });
     </script>
 </body>

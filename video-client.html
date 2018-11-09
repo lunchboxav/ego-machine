@@ -11,6 +11,7 @@
     var socket = io('/video');
 
     function sendVideoMessage(num) {
+        num = num.toString();
         socket.emit('videoEvent', num);
     }
 </script>
@@ -19,17 +20,10 @@
     <video id="my-video" controls autoplay="true" muted="muted" class="video-js vjs-fluid" data-setup='{}'>
     </video>
     <script src="lib/video.js"></script>
+    <script src="lib/videoList.js"></script>
     <script>
-        var videoList = [{
-            "src": "coding.mp4",
-            "type": 0
-        }, {
-            "src": "dance.mp4",
-            "type": 1
-        }, {
-            "src": "bloom.mp4",
-            "type": 2
-        }]
+        var videoList = vList;
+        console.log(videoList);
         var listLen = videoList.length;
         var rand = 0;
 
@@ -37,13 +31,13 @@
             var player = this;
             player.src({
                 "type": "video/mp4",
-                "src": videoList[0].src
+                "src": "video/" + videoList[0].src
             });
             player.on('ended', function() {
                 rand = Math.floor((Math.random() * listLen - 1) + 1);
                 player.src({
                     "type": "video/mp4",
-                    "src": videoList[rand].src
+                    "src": "video/" + videoList[rand].src
                 });
                 player.load();
                 player.play();
