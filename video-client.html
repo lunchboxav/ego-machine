@@ -4,6 +4,25 @@
 <head>
     <link href="lib/video-js.css" rel="stylesheet">
     <title>Video</title>
+    <style>
+        @font-face {
+            font-family: Raleway;
+            src: url(font/Raleway-ExtraBold.ttf);
+        }
+        
+        #serverMessage {
+            z-index: 99;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            color: #fff;
+            font-family: Raleway;
+            font-size: 96px;
+        }
+    </style>
 </head>
 <script src="lib/socket.io.js"></script>
 
@@ -17,6 +36,8 @@
 </script>
 
 <body>
+    <div id="serverMessage">Hello world</div>
+
     <video id="my-video" controls autoplay="true" muted="muted" class="video-js vjs-fluid" data-setup='{}'>
     </video>
     <script src="lib/video.js"></script>
@@ -43,6 +64,16 @@
                 player.play();
                 sendVideoMessage(videoList[rand].type);
             });
+        });
+    </script>
+    <script>
+        var socket = io('/');
+        socket.on('displayMessage', function(data) {
+            var mBox = document.getElementById("serverMessage");
+            mBox.innerHTML = data.message;
+            //mBox.className = data.mood;
+            //document.body.className = data.mood;
+            //console.log(data.mood);
         });
     </script>
 </body>

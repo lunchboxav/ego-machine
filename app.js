@@ -27,6 +27,9 @@ app.get('/video', function(req, res) {
 app.get('/video-client', function(req, res) {
     res.sendFile(__dirname + '/video-client.html');
 });
+app.get('/video-effect', function(req, res) {
+    res.sendFile(__dirname + '/video-client-effect.html');
+});
 
 app.use(express.static(__dirname + '/public'));
 // app.use('/static', express.static(path.join(__dirname + 'public')));

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="lib/video-js.css" rel="stylesheet">
+    <title>Video</title>
+    <style>
+        canvas {
+            z-index: 999;
+            left: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<script src="lib/socket.io.js"></script>
+
+<script>
+    var socket = io('/video');
+
+    function sendVideoMessage(num) {
+        num = num.toString();
+        socket.emit('videoEvent', num);
+    }
+</script>
+
+<body>
+    <!--<video id="my-video" controls autoplay="true" muted="muted" class="video-js vjs-fluid" width="480" height="320" data-setup='{}'>
+    </video> -->
+    <video autoplay id="mvideo" width="320" height="240" controls>
+        <source src="video/old.mp4" type="video/mp4">
+    </video>
+    <canvas id="canvas" width="960" height="640"></canvas>
+    <script src="lib/video.js"></script>
+    <script src="lib/videoList.js"></script>
+    <!--<script>
+        var videoList = vList;
+        console.log(videoList);
+        var listLen = videoList.length;
+        var rand = 0;
+
+        var video = videojs('my-video').ready(function() {
+            var player = this;
+            player.src({
+                "type": "video/mp4",
+                "src": "video/" + videoList[0].src
+            });
+            player.on('ended', function() {
+                rand = Math.floor((Math.random() * listLen - 1) + 1);
+                player.src({
+                    "type": "video/mp4",
+                    "src": "video/" + videoList[rand].src
+                });
+                player.load();
+                player.play();
+                sendVideoMessage(videoList[rand].type);
+            });
+        });
+    </script>-->
+    <script>
+        document.getElementById('mvideo').addEventListener('ended', endHandler, false);
+
+        function endHandler() {
+            console.log('end');
+            var video = document.getElementById('mvideo');
+            /*var source = document.createElement('source');
+
+            source.setAttribute('src', 'video/kids.mp4');
+            video.appendChild(source);
+            video.load();*/
+            video.src = 'video/kids.mp4'
+            video.play();
+        }
+    </script>
+    <script src="lib/seriously.js"></script>
+    <script src="lib/effects/seriously.vignette.js"></script>
+    <script src="lib/effects/seriously.hue-saturation.js"></script>
+    <script src="lib/effects/seriously.split.js"></script>
+    <script>
+        //main code goes here
+        // declare our variables
+        var seriously, // the main object that holds the entire composition
+            colorbars, // a wrapper object for our source image
+            vignette, // a vignette effect
+            target; // a wrapper object for our target canvas
+
+        seriously = new Seriously();
+        colorbars = seriously.source('#mvideo');
+        target = seriously.target('#canvas');
+        vignette = seriously.effect('vignette');
+
+        // connect all our nodes in the right order
+        vignette.source = colorbars;
+        vignette.amount = 10;
+        target.source = vignette;
+        seriously.go();
+    </script>
+</body>
+
+</html>

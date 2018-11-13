@@ -114,15 +114,15 @@
     "happy": {
         "2": {
             "0": {
-                "dialogue": "With all due respect my friend, I don't think this food fits our festive mood. Bbut you're free to eat though.",
+                "dialogue": "With all due respect, I don't think this food fits our festive mood.",
                 "accept": "0"
             },
             "1": {
-                "dialogue": "Thank you very much for the offer, my friend. But I've eaten before I got here and I'm pretty full.",
+                "dialogue": "Thank you very much for the offer, my friend. But I've eaten before I got here.",
                 "accept": "0"
             },
             "2": {
-                "dialogue": "Of course! Not even Einstein could figure out the scientific reason of me refusing that delicious food.",
+                "dialogue": "Of course! Not even Einstein could formulate why I should say no to this food.",
                 "accept": "1"
             },
             "3": {
